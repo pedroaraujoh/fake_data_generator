@@ -1,0 +1,21 @@
+services:
+  my-app:
+    image: jupyter/minimal-notebook
+    container_name: jupyter
+    restart: always
+    ports:
+      - 4200:4200
+    volumes:
+      - /home/pedroaraujoh/Github:/home/user/github
+      - jupyter:/home/user/jupyter/
+    networks:
+      - jupyter
+    command: ["bash", "-c", "pip install -U prefect && prefect server start"]
+
+volumes:
+  jupyter:
+    driver: local
+
+networks:
+  jupyter:
+    driver: bridge
