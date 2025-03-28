@@ -11,5 +11,6 @@ def create_fake_data():
 def fake_data_generator():
     create_fake_data()
 
+# This is the entry point for the Prefect flow
 if __name__ == "__main__":
     fake_data_generator.serve(name="first-deployment", cron=("* * * * *"))
